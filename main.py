@@ -3,6 +3,7 @@ flask web
 """
 from flask import Flask
 from helper import is_isbn_or_key
+from search import Search
 
 app = Flask(__name__)
 # 导入配置文件
@@ -10,13 +11,15 @@ app.config.from_object('config')
 
 
 # 解释路由
-@app.route('/book/search/<q>/<page>')
-def search(q,page):
+@app.route('/search/<q>/<page>')
+def search(q, page):
     """
         q:普通搜索 isbn
         page
     """
     isbn_or_key = is_isbn_or_key(q)
+    if isbn_or_key == 'isbn':
+        Search.search_by_isbn(q)
     pass
 
 
