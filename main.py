@@ -1,7 +1,8 @@
 """
 flask web
 """
-from flask import Flask
+
+from flask import Flask, jsonify
 from helper import is_isbn_or_key
 from search import Search
 
@@ -19,9 +20,10 @@ def search(q, page):
     """
     isbn_or_key = is_isbn_or_key(q)
     if isbn_or_key == 'isbn':
-        Search.search_by_isbn(q)
-    pass
-
+        result = Search.search_by_isbn(q)
+    else:
+        result = Search.search_by_keyword(q)
+    return jsonify(result)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=app.config['DEBUG'], port=80)
