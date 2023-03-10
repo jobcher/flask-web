@@ -1,6 +1,6 @@
 version: '3'
-  services:
-    search-web:
-      build: .
-      ports:
-        - 80:80
+services:
+  search-web:
+    build: .
+    ports:
+      - 80:80
