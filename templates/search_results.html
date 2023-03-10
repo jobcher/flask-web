@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>搜索结果</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0 0 20px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #333;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        a {
+            /*color: #007bff;*/
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        li {
+            list-style: none;
+        }
+        p{
+            font-size: 8px;
+        }
+        a[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        a[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>搜索结果</h1>
+        <a href="/" type="submit">返回首页</a>
+    </div>
+    <br>
+    <div class="container">
+            {% for result in results %}
+            <ul>
+                <li><a href="{{ result[2] }}" style="color: #333333;font-size: 20px">{{ result[1] }}</a></li>
+                <li><p><a href="{{ result[2] }}" style="color: #333333">{{ result[2] }}</a></p></li>
+                <br><br>
+            </ul>
+            {% endfor %}
+    </div>
+</body>
+</html>
